@@ -46,6 +46,16 @@ def get_user_info(user_id):
 
     return User.query.get(user_id)
 
+def get_user_by_email(email):
+    """Return a user by email"""
+
+    return User.query.filter(User.email == email).first()
+    
+def check_user_login_info(email, password):
+    """check if the users email and password match in the database"""
+
+    return User.query.filter((User.email == email) & (User.password == password)).first()
+
 def create_rating(user, movie, score):
     """Create and return a new rating."""
 
